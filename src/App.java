@@ -50,7 +50,12 @@ public class App {
                 System.out.println("입력하신 숫자 중 음수가 있습니다");
             }
 
-            sc.close(); //스캐너 종료 컴파일 오류 예방
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
+            String q = sc.next();
+            if(q.equals("exit")) {
+                sc.close(); //스캐너 종료 컴파일 오류 예방
+                break; //탈출
+            }
         }
     }
 }
