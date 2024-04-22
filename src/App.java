@@ -2,6 +2,8 @@ import java.io.Console;
 import java.util.Scanner; //스캐너 라이브러리
 
 public class App {
+    static int[] resultArray = new int[10]; //전역변수 값 저장고
+    static int count = 0; //전역변수 담겨있는 값의 갯수
     public static void main(String[] args) {
         while (true) {
             Scanner sc = new Scanner(System.in); //스캐너 생성
@@ -22,6 +24,7 @@ public class App {
                     case '+':
                         result = a + b; //더하기
                         System.out.println("결과: " + result);
+                        AddArray(result);
                         break;
                     case '-':
                         result = a - b; //빼기
@@ -57,5 +60,19 @@ public class App {
                 break; //탈출
             }
         }
+    }
+    public static void AddArray(int a){ //결과를 저장하는 메소드
+        if(count >= resultArray.length){ //10개가 가득찬 경우
+            ChangeArray(a);
+        }else {
+            resultArray[count] = a;
+            count++;
+        }
+    }
+    public static void ChangeArray(int b){ //배열을 한단계 땡기는 메소드
+        for(int i = 0 ; i < resultArray.length-1 ; i++){ //한칸씩 땡김
+            resultArray[i] = resultArray[i+1];
+        }
+        resultArray[resultArray.length-1] = b; //마지막에 삽입
     }
 }
