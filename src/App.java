@@ -1,9 +1,11 @@
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.Scanner; //스캐너 라이브러리
+import java.util.List; //리스트 라이브러리
 
 public class App {
-    static int[] resultArray = new int[10]; //전역변수 값 저장고
-    static int count = 0; //전역변수 담겨있는 값의 갯수
+    static List<Integer> resultArray;
+     //전역변수 값 저장고
     public static void main(String[] args) {
         while (true) {
             Scanner sc = new Scanner(System.in); //스캐너 생성
@@ -29,10 +31,12 @@ public class App {
                     case '-':
                         result = a - b; //빼기
                         System.out.println("결과: " + result);
+                        AddArray(result);
                         break;
                     case '*':
                         result = a * b; //곱하기
                         System.out.println("결과: " + result);
+                        AddArray(result);
                         break;
                     case '/':
                         if (b == 0) { //분모 확인
@@ -41,16 +45,24 @@ public class App {
                         }
                         result = a / b; //몫
                         System.out.println("결과: " + result);
+                        AddArray(result);
                         break;
                     case '%':
                         result = a % b; //나머지
                         System.out.println("결과: " + result);
+                        AddArray(result);
                         break;
                     default:
                         System.out.println("사칙연산 기호가 아닙니다");
                 }
             } else {
                 System.out.println("입력하신 숫자 중 음수가 있습니다");
+            }
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String r = sc.next();
+            if(r.equals("remove")) {
+                RemoveArray();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
@@ -62,17 +74,9 @@ public class App {
         }
     }
     public static void AddArray(int a){ //결과를 저장하는 메소드
-        if(count >= resultArray.length){ //10개가 가득찬 경우
-            ChangeArray(a);
-        }else {
-            resultArray[count] = a;
-            count++;
-        }
+        resultArray.add(a);
     }
-    public static void ChangeArray(int b){ //배열을 한단계 땡기는 메소드
-        for(int i = 0 ; i < resultArray.length-1 ; i++){ //한칸씩 땡김
-            resultArray[i] = resultArray[i+1];
-        }
-        resultArray[resultArray.length-1] = b; //마지막에 삽입
+    public static void RemoveArray(){ //결과 앞부분 삭제 메소드
+        resultArray.removeFirst();
     }
 }
