@@ -10,6 +10,9 @@ public class App {
         System.out.print("두 번째 숫자를 입력하세요: ");
         int b = sc.nextInt(); //두 번째 인수
 
+        System.out.print("사칙연산 기호를 입력하세요: ");
+        char c = sc.next().charAt(0); //사칙연산 기호
+
         sc.close(); //스캐너 종료 컴파일 오류 예방
     }
 }
