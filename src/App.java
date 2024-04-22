@@ -4,7 +4,7 @@ import java.util.Scanner; //스캐너 라이브러리
 import java.util.List; //리스트 라이브러리
 
 public class App {
-    static List<Integer> resultArray;
+    static List<Integer> resultArray  = new ArrayList<>();
      //전역변수 값 저장고
     public static void main(String[] args) {
         while (true) {
@@ -65,7 +65,15 @@ public class App {
                 RemoveArray();
             }
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String i = sc.next();
+            if(i.equals("inquiry")) {
+                for(int unit : resultArray) {  //향상된 for문
+                    System.out.print(unit + " ");
+                }
+            }
+
+            System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
             String q = sc.next();
             if(q.equals("exit")) {
                 sc.close(); //스캐너 종료 컴파일 오류 예방
@@ -77,6 +85,6 @@ public class App {
         resultArray.add(a);
     }
     public static void RemoveArray(){ //결과 앞부분 삭제 메소드
-        resultArray.removeFirst();
+        resultArray.removeFirst(); //remove(0) 대신 사용
     }
 }
