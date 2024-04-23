@@ -4,6 +4,7 @@ import java.util.Scanner; //스캐너 라이브러리
 import java.util.List; //리스트 라이브러리
 
 public class App {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); //스캐너 생성
 
@@ -50,8 +51,9 @@ public class App {
                 if (a >= 0 && b >= 0) { //두 인수의 음수 판별
                     System.out.print("사칙연산 기호를 입력하세요: ");
                     char c = sc.next().charAt(0); //사칙연산 기호
+                    EnumClass.Operator op = EnumClass.Operator.fromSymbol(c);
 
-                    result = calculator.math.Calc(a,b,c);
+                    result = calculator.math.Calc(a,b,op);
                     if(c=='/' && b==0)
                     {
                         System.out.println("결과 : ERROR");

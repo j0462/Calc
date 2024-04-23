@@ -9,19 +9,19 @@ public class ArithmeticCalculator {
         resultArray = new ArrayList<Integer>();
     }
 
-    public int Calc(int a, int b, char c){ //계산
+    public int Calc(int a, int b, EnumClass.Operator c){ //계산
         int result = 0;
         switch (c) {
-            case '+':
+            case EnumClass.Operator.PLUS:
                 result = Operator.addOperator(a,b);
                 break;
-            case '-':
+            case EnumClass.Operator.MINUS:
                 result = Operator.subtractOperator(a,b); //빼기
                 break;
-            case '*':
+            case EnumClass.Operator.MULTIPLY:
                 result = Operator.multiplyOperator(a,b); //곱하기
                 break;
-            case '/':
+            case EnumClass.Operator.DIVIDE:
                 try {
                     if (b != 0) {
                         result = Operator.divideOperator(a,b);;
@@ -33,12 +33,9 @@ public class ArithmeticCalculator {
                     return 0;
                 }
                 break;
-            case '%':
+            case EnumClass.Operator.MODULO:
                 result= Operator.moduloOperator(a,b);; //나머지
                 break;
-            default:
-                System.out.println("사칙연산 기호가 아닙니다");
-                return 0;
         }
         AddArray(result);
         return result; //반환값
