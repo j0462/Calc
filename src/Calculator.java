@@ -52,7 +52,10 @@ public class Calculator {
         }
         return result; //반환값
     }
-    public static void AddArray(int a){ //결과를 저장하는 메소드
+    public void AddArray(int a){ //결과를 저장하는 메소드
         resultArray.add(a);
+    }
+    public void RemoveArray(){ //결과를 저장하는 메소드
+        resultArray.removeFirst();
     }
 }
