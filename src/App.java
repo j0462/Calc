@@ -32,16 +32,18 @@ public class App {
                 System.out.println("입력하신 숫자 중 음수가 있습니다");
             }
 
+            Calculator calculator = new Calculator();
+
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String r = sc.next();
             if(r.equals("remove")) {
-                RemoveArray();
+                calculator.RemoveArray();
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String i = sc.next();
             if(i.equals("inquiry")) {
-                for(int unit : resultArray) {  //향상된 for문
+                for(int unit : calculator.resultArray) {  //향상된 for문
                     System.out.print(unit + " ");
                 }
             }

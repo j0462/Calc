@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    static List<Integer> resultArray  = new ArrayList<>();
+    public static List<Integer> resultArray  = new ArrayList<>();
     public int Calc(int a, int b, char c){
         int result = 0;
         switch (c) {
