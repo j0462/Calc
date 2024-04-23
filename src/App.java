@@ -33,22 +33,10 @@ public class App {
             }
 
             Calculator calculator = new Calculator(); //클래스 생성자
-            List<Integer> array = calculator.GetArray(); //결과리스트 가져옴
 
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            String r = sc.next();
-            if(r.equals("remove")) {
-                calculator.RemoveArray(); //리스트 앞부분 삭제
-                array = calculator.GetArray(); //array 재갱신
-            }
+            calculator.RemoveArray(sc); //삭제 메소드
 
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-            String i = sc.next();
-            if(i.equals("inquiry")) {
-                for(int unit : array) {  //향상된 for문
-                    System.out.print(unit + " ");
-                }
-            }
+            calculator.InquiryArray(sc); //조회 메소드
 
             System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
             String q = sc.next();

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner; //스캐너 라이브러리
 
 public class Calculator {
     static List<Integer> resultArray  = new ArrayList<>(); //public 생략시 private
@@ -55,7 +56,20 @@ public class Calculator {
     public void AddArray(int a){ //결과를 저장하는 메소드
         resultArray.add(a);
     }
-    public void RemoveArray(){ //결과를 저장하는 메소드
-        resultArray.removeFirst();
+    public void RemoveArray(Scanner sc){ //결과를 삭제하는 메소드
+        System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+        String r = sc.next();
+        if(r.equals("remove")) {
+            resultArray.removeFirst();
+        }
+    }
+    public void InquiryArray(Scanner sc){ //결과를 조회하는 메소드
+        System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+        String i = sc.next();
+        if(i.equals("inquiry")) {
+            for(int unit : resultArray) {  //향상된 for문
+                System.out.print(unit + " ");
+            }
+        }
     }
 }
