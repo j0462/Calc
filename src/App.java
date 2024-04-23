@@ -17,7 +17,7 @@ public class App {
                 double result = 0;
                 try{
                     if(a>=0) {
-                        result = calculator.calculateCircleArea(a);
+                        result = calculator.circle.calculateCircleArea(a);
                     }else{
                         throw new Exception("반지름이 마이너스");
                     }
@@ -27,9 +27,9 @@ public class App {
 
                 System.out.println("결과 : "+result);
 
-                calculator.CRemoveArray(sc); //삭제 메소드
+                calculator.circle.CRemoveArray(sc); //삭제 메소드
 
-                calculator.CInquiryArray(sc); //조회 메소드
+                calculator.circle.CInquiryArray(sc); //조회 메소드
 
                 System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
                 String q = sc.next();
@@ -51,7 +51,7 @@ public class App {
                     System.out.print("사칙연산 기호를 입력하세요: ");
                     char c = sc.next().charAt(0); //사칙연산 기호
 
-                    result = calculator.Calc(a,b,c);
+                    result = calculator.math.Calc(a,b,c);
                     if(c=='/' && b==0)
                     {
                         System.out.println("결과 : ERROR");
@@ -62,9 +62,9 @@ public class App {
                     System.out.println("입력하신 숫자 중 음수가 있습니다");
                 }
 
-                calculator.RemoveArray(sc); //삭제 메소드
+                calculator.math.RemoveArray(sc); //삭제 메소드
 
-                calculator.InquiryArray(sc); //조회 메소드
+                calculator.math.InquiryArray(sc); //조회 메소드
 
                 System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
                 String q = sc.next();
