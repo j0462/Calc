@@ -3,15 +3,17 @@ import java.util.List;
 import java.util.Scanner; //스캐너 라이브러리
 
 public class Calculator {
-    static List<Integer> resultArray  = new ArrayList<>(); //public 생략시 private
+    static List<Integer> resultArray; //public 생략시 private
 
-    public List<Integer> GetArray() //Getter 메소드
-    {
+    public Calculator() { //생성자 초기화
+        resultArray = new ArrayList<>();
+    }
+
+    public List<Integer> GetArray(){ //Getter 메소드
         return resultArray;
     }
 
-    public void SetArray(List<Integer> array) //Setter 메소드
-    {
+    public void SetArray(List<Integer> array){ //Setter 메소드
         resultArray = array;
     }
 
