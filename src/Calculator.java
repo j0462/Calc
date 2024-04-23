@@ -2,8 +2,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    public static List<Integer> resultArray  = new ArrayList<>();
-    public int Calc(int a, int b, char c){
+    static List<Integer> resultArray  = new ArrayList<>(); //public 생략시 private
+
+    public List<Integer> GetArray() //Getter 메소드
+    {
+        return resultArray;
+    }
+
+    public void SetArray(List<Integer> array) //Setter 메소드
+    {
+        resultArray = array;
+    }
+
+    public int Calc(int a, int b, char c){ //계산
         int result = 0;
         switch (c) {
             case '+':
@@ -24,9 +35,9 @@ public class Calculator {
                         result = a / b;
                         AddArray(result);
                     } else {
-                        throw new ArithmeticException("분모가 0 입니다");
+                        throw new ArithmeticException("분모가 0 입니다"); //오류 던짐
                     }
-                } catch (ArithmeticException e){
+                } catch (ArithmeticException e){ //오류 잡음
                     System.out.println("나눗셈 연산의 분모는 0이 될 수 없습니다");
                     return 0;
                 }
@@ -39,12 +50,9 @@ public class Calculator {
                 System.out.println("사칙연산 기호가 아닙니다");
                 return 0;
         }
-        return result;
+        return result; //반환값
     }
     public static void AddArray(int a){ //결과를 저장하는 메소드
         resultArray.add(a);
-    }
-    public static void RemoveArray(){ //결과 앞부분 삭제 메소드
-        resultArray.removeFirst(); //remove(0) 대신 사용
     }
 }
