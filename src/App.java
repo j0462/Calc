@@ -4,8 +4,6 @@ import java.util.Scanner; //스캐너 라이브러리
 import java.util.List; //리스트 라이브러리
 
 public class App {
-    static List<Integer> resultArray  = new ArrayList<>();
-     //전역변수 값 저장고
     public static void main(String[] args) {
         while (true) {
             Scanner sc = new Scanner(System.in); //스캐너 생성
@@ -22,38 +20,13 @@ public class App {
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char c = sc.next().charAt(0); //사칙연산 기호
 
-                switch (c) {
-                    case '+':
-                        result = a + b; //더하기
-                        System.out.println("결과: " + result);
-                        AddArray(result);
-                        break;
-                    case '-':
-                        result = a - b; //빼기
-                        System.out.println("결과: " + result);
-                        AddArray(result);
-                        break;
-                    case '*':
-                        result = a * b; //곱하기
-                        System.out.println("결과: " + result);
-                        AddArray(result);
-                        break;
-                    case '/':
-                        if (b == 0) { //분모 확인
-                            System.out.println("나눗셈 연산의 분모는 0이 될 수 없습니다");
-                            return;
-                        }
-                        result = a / b; //몫
-                        System.out.println("결과: " + result);
-                        AddArray(result);
-                        break;
-                    case '%':
-                        result = a % b; //나머지
-                        System.out.println("결과: " + result);
-                        AddArray(result);
-                        break;
-                    default:
-                        System.out.println("사칙연산 기호가 아닙니다");
+                Calculator calculator = new Calculator();
+                result = calculator.Calc(a,b,c);
+                if(c=='/' && b==0)
+                {
+                    System.out.println("결과 : ERROR");
+                }else {
+                    System.out.println("결과 : "+result);
                 }
             } else {
                 System.out.println("입력하신 숫자 중 음수가 있습니다");
@@ -80,11 +53,5 @@ public class App {
                 break; //탈출
             }
         }
-    }
-    public static void AddArray(int a){ //결과를 저장하는 메소드
-        resultArray.add(a);
-    }
-    public static void RemoveArray(){ //결과 앞부분 삭제 메소드
-        resultArray.removeFirst(); //remove(0) 대신 사용
     }
 }
