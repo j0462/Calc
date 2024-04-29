@@ -39,7 +39,7 @@ public class App {
             }
         } else if(calculator.Getmode().equals("math")){ //산수기능
             while (true) {
-                System.out.print("첫 번째 숫자)를 입력하세요: ");
+                System.out.print("첫 번째 숫자를 입력하세요: ");
                 double a = sc.nextDouble(); //첫 번째 인수
 
                 System.out.print("두 번째 숫자를 입력하세요: ");
@@ -63,6 +63,8 @@ public class App {
                 calculators.RemoveArray(sc); //삭제 메소드
 
                 calculators.InquiryArray(sc); //조회 메소드
+
+                calculators.GreaterThanInput(a, b, sc); //람다 스트림 활용
 
                 System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
                 String q = sc.next();

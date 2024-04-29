@@ -6,7 +6,7 @@ public class ArithmeticCalculator<T extends Number> {
     List<T> resultArray; //public 생략시 private
 
     public ArithmeticCalculator() {
-        resultArray = new ArrayList<T>();
+        resultArray = new ArrayList<T>(); //제네릭스로 변경과정에서 동적할당이 안됨 이유모름?
     }
 
     public T Calc(T a, T b, EnumClass.Operator c){ //계산
@@ -55,8 +55,18 @@ public class ArithmeticCalculator<T extends Number> {
         String i = sc.next();
         if(i.equals("inquiry")) {
             for(T unit : resultArray) {  //향상된 for문
-                System.out.print(unit + " ");
+                System.out.println(unit + " ");
             }
+        }
+    }
+    public void GreaterThanInput(double a, double b, Scanner sc) {
+        System.out.println("입력값보다 큰 결과 값들을 출력하시겠습니까? (filter 입력 시 조회)");
+        String i = sc.next();
+        double input = Math.max(a,b);
+        if(i.equals("filter")) {
+            resultArray.stream()
+                    .filter(result -> result.doubleValue() > input)
+                    .forEach(System.out::println);
         }
     }
 }
