@@ -6,7 +6,7 @@ public class ArithmeticCalculator<T extends Number> {
     List<T> resultArray; //public 생략시 private
 
     public ArithmeticCalculator() {
-        resultArray = new ArrayList<T>(); //제네릭스로 변경과정에서 동적할당이 안됨 이유모름?
+        resultArray = new ArrayList<T>(); //해결
     }
 
     public T Calc(T a, T b, EnumClass.Operator c){ //계산

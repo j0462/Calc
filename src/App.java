@@ -10,11 +10,11 @@ public class App {
         Calculator calculator = new Calculator(sc); //클래스 생성자
 
         if(calculator.Getmode().equals("circle")){
+            CircleCalculator calculators = new CircleCalculator();
             while (true){
                 System.out.print("반지름을 입력해주세요: ");
                 double a = sc.nextDouble(); //반지름 인수
                 double result = 0;
-                CircleCalculator calculators = new CircleCalculator();
                 try{
                     if(a>=0) {
                         result = calculators.calculateCircleArea(a);
@@ -38,6 +38,7 @@ public class App {
                 }
             }
         } else if(calculator.Getmode().equals("math")){ //산수기능
+            ArithmeticCalculator<Double> calculators = new ArithmeticCalculator();
             while (true) {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 double a = sc.nextDouble(); //첫 번째 인수
@@ -51,7 +52,7 @@ public class App {
                 char c = sc.next().charAt(0); //사칙연산 기호
                 EnumClass.Operator op = EnumClass.Operator.fromSymbol(c);
 
-                ArithmeticCalculator<Double> calculators = new ArithmeticCalculator();
+
                 result = calculators.Calc(a,b,op);
                 if(c=='/'&&b==0) {
                     System.out.println("결과 : ERROR");
