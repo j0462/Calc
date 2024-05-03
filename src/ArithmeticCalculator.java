@@ -9,22 +9,22 @@ public class ArithmeticCalculator<T extends Number> {
         resultArray = new ArrayList<T>(); //해결
     }
 
-    public T Calc(T a, T b, EnumClass.Operator c){ //계산
+    public T Calc(T a, T b, Operator c){ //계산
         T result = null;
         switch (c) {
-            case EnumClass.Operator.PLUS:
-                result = Operator.addOperator(a,b);
+            case Operator.PLUS:
+                result = Operate.addOperator(a,b);
                 break;
-            case EnumClass.Operator.MINUS:
-                result = Operator.subtractOperator(a,b); //빼기
+            case Operator.MINUS:
+                result = Operate.subtractOperator(a,b); //빼기
                 break;
-            case EnumClass.Operator.MULTIPLY:
-                result = Operator.multiplyOperator(a,b); //곱하기
+            case Operator.MULTIPLY:
+                result = Operate.multiplyOperator(a,b); //곱하기
                 break;
-            case EnumClass.Operator.DIVIDE:
+            case Operator.DIVIDE:
                 try {
                     if (!b.equals(0)) {
-                        result = Operator.divideOperator(a,b);;
+                        result = Operate.divideOperator(a,b);;
                     } else {
                         throw new ArithmeticException("분모가 0 입니다"); //오류 던짐
                     }
@@ -33,8 +33,8 @@ public class ArithmeticCalculator<T extends Number> {
                     return null;
                 }
                 break;
-            case EnumClass.Operator.MODULO:
-                result= Operator.moduloOperator(a,b);; //나머지
+            case Operator.MODULO:
+                result= Operate.moduloOperator(a,b);; //나머지
                 break;
         }
         AddArray(result);
@@ -46,14 +46,14 @@ public class ArithmeticCalculator<T extends Number> {
     public void RemoveArray(Scanner sc){ //결과를 삭제하는 메소드
         System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
         String r = sc.next();
-        if(r.equals("remove")) {
+        if("remove".equals(r)) {
             resultArray.removeFirst();
         }
     }
     public void InquiryArray(Scanner sc){ //결과를 조회하는 메소드
         System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
         String i = sc.next();
-        if(i.equals("inquiry")) {
+        if("inquiry".equals(i)) {
             for(T unit : resultArray) {  //향상된 for문
                 System.out.println(unit + " ");
             }
@@ -63,7 +63,7 @@ public class ArithmeticCalculator<T extends Number> {
         System.out.println("입력값보다 큰 결과 값들을 출력하시겠습니까? (filter 입력 시 조회)");
         String i = sc.next();
         double input = Math.max(a,b);
-        if(i.equals("filter")) {
+        if("filter".equals(i)) {
             resultArray.stream()
                     .filter(result -> result.doubleValue() > input)
                     .forEach(System.out::println);

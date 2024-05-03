@@ -1,25 +1,28 @@
-public class Operator<T extends Number> {
-    public static <T extends Number> T addOperator(T a, T b) {
-        return (T) (Number) (a.doubleValue() + b.doubleValue());
-    }
 
-    public static <T extends Number> T subtractOperator(T a, T b) {
-        return (T) (Number) (a.doubleValue() - b.doubleValue());
-    }
+    public enum Operator {
+        PLUS('+'),
+        MINUS('-'),
+        MULTIPLY('*'),
+        DIVIDE('/'),
+        MODULO('%');
 
-    public static <T extends Number> T multiplyOperator(T a, T b) {
-        return (T) (Number) (a.doubleValue() * b.doubleValue());
-    }
+        final char symbol;
 
-    public static <T extends Number> T divideOperator(T a, T b) {
-        if (!b.equals(0)) {
-            return (T) (Number) (a.doubleValue() / b.doubleValue());
-        } else {
-            throw new ArithmeticException("분모가 0 입니다");
+        Operator(char symbol) {
+            this.symbol = symbol;
+        }
+
+        public char getSymbol() {
+            return symbol;
+        }
+
+        public static Operator fromSymbol(char symbol) {
+            for (Operator op : Operator.values()) {
+                if (op.getSymbol() == symbol) {
+                    return op;
+                }
+            }
+            throw new IllegalArgumentException("없는 기호입니다: " + symbol);
         }
     }
 
-    public static <T extends Number> T moduloOperator(T a, T b) { //클래스의 메소드 단일 책임화
-        return (T) (Number) (a.doubleValue() % b.doubleValue());
-    }
-}

@@ -33,7 +33,7 @@ public class App {
 
                 System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
                 String q = sc.next();
-                if(q.equals("exit")) {
+                if("exit".equals(q)) {
                     break; //탈출
                 }
             }
@@ -50,7 +50,7 @@ public class App {
 
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char c = sc.next().charAt(0); //사칙연산 기호
-                EnumClass.Operator op = EnumClass.Operator.fromSymbol(c);
+                Operator op = Operator.fromSymbol(c);
 
 
                 result = calculators.Calc(a,b,op);
@@ -69,7 +69,7 @@ public class App {
 
                 System.out.println("\n더 계산하시겠습니까? (exit 입력 시 종료)"); //종료 트리거
                 String q = sc.next();
-                if(q.equals("exit")) {
+                if("exit".equals(q)) {
                     break; //탈출
                 }
             }
